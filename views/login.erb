@@ -1,9 +1,9 @@
 
 
 
-<div class="signup-bubble">
-	<h2>Sign In</h2>
-	<form>
+<div class="login-bubble">
+	<h2>Log In</h2>
+	<form action="/login" method="POST">
 	  <div class="form-group">
 	    <label for="email">Email Address</label>
 	    <input type="email" class="form-control" id="email" name="user[email]" aria-describedby="emailHelp" placeholder="Enter Email">
@@ -13,12 +13,8 @@
 	    <label for="password">Password</label>
 	    <input type="password" class="form-control" id="password" name="user[password]" placeholder="Password">
 	  </div>
-	  <div class="form-check">
-	    <label class="form-check-label">
-	      <input type="checkbox" class="form-check-input">
-	      Check me out
-	    </label>
-	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
+	  <small id="signup-prompt" class="form-text text-muted">If you don't have an account with us...</small>
+	  <p><a href="/signup">Join us!</a></p>
 	</form>
 </div>

@@ -38,6 +38,9 @@
 </head>
 <body>
 
+<% if @user %>
+
+
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
@@ -71,6 +74,12 @@
 <footer class="container-fluid">
   <p>This is America, you live in it, you let it happen. Let it unfurl.</p>
 </footer>
+
+<% else %>
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
+<% end %>
 
 </body>
 </html>
