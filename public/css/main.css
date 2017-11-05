@@ -9,3 +9,37 @@ body {
 	margin-top: 40px;
 	margin-left: 100px;
 }
+
+.post-box {
+	width: 80%;
+	height: 100px;
+	position: relative;
+	margin: 10px auto;
+	border: 2px solid black;
+
+}
+
+.post-title {
+	position: absolute;
+	top: 1%;
+	left: 20%;
+	font-weight: bold;
+}
+
+.post-author {
+	position: absolute;
+	right: 1%;
+	bottom: 2%;
+}
+
+.post-time {
+	position: absolute;
+	right: 1%;
+	top: 2%;
+}
+
+.post-content {
+	position: absolute;
+	left: 10%;
+	top: 40%;
+}
