@@ -12,6 +12,10 @@
 		<input type="radio" name="options" id="option3" autocomplete="off"> All
 	</label>
 </div>
+<button class="btn btn-primary" style="float: right;" id="new-post">New Post</button>
+<br>
+<hr>
+<br>
 
 
 <% Post.all.each do |post| %>
@@ -24,4 +28,12 @@
 </div>
 
 <% end %>
+
+<div class="new-post-box">
+	<form action="/home" method="POST">
+		<input type="text" class="new-post-title" name="new-post-title">
+		<textarea name="new-post-content" id="new-post" ></textarea>
+		<button type="submit" class="btn btn-primary">Post</button>
+	</form>
+</div>
 	
