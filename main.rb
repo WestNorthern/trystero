@@ -22,6 +22,14 @@ get '/' do
 	erb :home
 end
 
+post '/home' do
+	@user = current_user
+	@content = params[:content]
+	@title = params[:title]
+	@user.posts.create(title: @title, content: @content)
+	erb :home
+end
+
 get '/friends' do
 	@user = current_user
 	params[:controller] = 'friends'

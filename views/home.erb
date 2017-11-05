@@ -1,3 +1,39 @@
 
-		<h1>Home</h1>
+<h1>Home</h1>
+
+<div class="btn-group" data-toggle="buttons">
+	<label class="btn btn-primary">
+		<input type="radio" name="options" id="option1" autocomplete="off"> Friends
+	</label>
+	<label class="btn btn-primary">
+		<input type="radio" name="options" id="option2" autocomplete="off"> My Posts
+	</label>
+	<label class="btn btn-primary active">
+		<input type="radio" name="options" id="option3" autocomplete="off"> All
+	</label>
+</div>
+<button class="btn btn-primary" style="float: right;" id="new-post">New Post</button>
+<br>
+<hr>
+<br>
+
+
+<% Post.all.reverse.each do |post| %>
+
+<div class="post-box">
+	<div class="post-title"><%= post.title %></div>
+	<div class="post-author"><%= post.user.name %></div>
+	<div class="post-time"><%= post.created_at %></div>
+	<div class="post-content"><%= post.content %></div>
+</div>
+
+<% end %>
+
+<div class="new-post-box">
+	<form action="/home" method="POST">
+		<input type="text" class="new-post-title" name="title">
+		<textarea name="content" id="new-post" ></textarea>
+		<button type="submit" class="btn btn-primary">Post</button>
+	</form>
+</div>
 	
