@@ -1,32 +1,70 @@
 
 <h1>Home</h1>
 
-<div class="btn-group" data-toggle="buttons">
-	<label class="btn btn-primary">
-		<input type="radio" name="options" id="option1" autocomplete="off"> Friends
+<div>
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'friends' %>" href="/friends-posts">
+		<a class="post-display-buttons" href="/friends-posts">Friends</a>
 	</label>
-	<label class="btn btn-primary">
-		<input type="radio" name="options" id="option2" autocomplete="off"> My Posts
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'myposts' %>" href="/myposts">
+		<a class="post-display-buttons" href="/myposts">My Posts</a>
 	</label>
-	<label class="btn btn-primary active">
-		<input type="radio" name="options" id="option3" autocomplete="off"> All
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'home' %>" href="/">
+		<a class="post-display-buttons" href="/">All</a>
 	</label>
 </div>
 <button class="btn btn-primary" style="float: right;" id="new-post">New Post</button>
+<button class="btn btn-primary" style="float: right; display: none;" id="nevermind">Nevermind...</button>
 <br>
 <hr>
 <br>
 
-
+<% if params[:controller] == 'home' %>
 <% Post.all.reverse.each do |post| %>
 
-<div class="post-box">
+<form class="post-box" id="<%= post.created_at %>" action="/profile" method="POST">
 	<div class="post-title"><%= post.title %></div>
-	<div class="post-author"><%= post.user.name %></div>
+	<input type="hidden" this_user="<%= post.user.name %>" value="<%= post.user.name %>" >
+	<div class="post-author">
+		<a onclick="submit(); return false;"><%= post.user.name %></a>
+	</div>
 	<div class="post-time"><%= post.created_at %></div>
 	<div class="post-content"><%= post.content %></div>
-</div>
+</form>
 
+<% end %>
+<% end %>
+
+<% if params[:controller] == 'friends' %>
+<% Post.all.reverse.each do |post| %>
+
+<form class="post-box" id="post-box" action="/profile" method="POST">
+	<div class="post-title"><%= post.title %></div>
+	<input type="text" this_user="<%= post.user.name %>">
+	<div class="post-author">
+		<a onclick="document.getElementById('post-box').submit(); return false;"><%= post.user.name %></a>
+	</div>
+	<div class="post-time"><%= post.created_at %></div>
+	<div class="post-content"><%= post.content %></div>
+</form>
+
+<% end %>
+<% end %>
+
+<% if params[:controller] == 'myposts' %>
+<% @user.posts.all.reverse.each do |post| %>
+
+<form class="post-box" id="post-box" action="/profile" method="POST">
+	<div class="post-title"><%= post.title %></div>
+	<input type="hidden" this_user="<%= post.user.name %>">
+	<div class="post-author">
+		<a onclick="document.getElementById('post-box').submit(); return false;"><%= post.user.name %></a>
+	</div>
+	<div class="post-time"><%= post.created_at %></div>
+	<div class="post-content"><%= post.content %></div>
+</form>
+
+
+<% end %>
 <% end %>
 
 <div class="new-post-box">

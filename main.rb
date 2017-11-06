@@ -27,6 +27,25 @@ post '/home' do
 	@content = params[:content]
 	@title = params[:title]
 	@user.posts.create(title: @title, content: @content)
+	params[:controller] = 'home'
+	erb :home
+end
+
+get '/friends-posts' do
+	@user = current_user
+	@content = params[:content]
+	@title = params[:title]
+	# @user.posts.create(title: @title, content: @content)
+	params[:controller] = 'friends'
+	erb :home
+end
+
+get '/myposts' do
+	@user = current_user
+	@content = params[:content]
+	@title = params[:title]
+	# @user.posts.create(title: @title, content: @content)
+	params[:controller] = 'myposts'
 	erb :home
 end
 
@@ -67,9 +86,7 @@ post '/signup' do
 	
 	p params
 	session[:user_id] = @user.id
-
-
-	erb :home
+	redirect '/'
 end
 
 get '/profile' do
@@ -77,6 +94,16 @@ get '/profile' do
 	params[:controller] = 'profile'
 	erb :profile
 end
+
+post '/profile' do
+	@user = current_user
+	puts "Here are the params"
+	p params
+	@other_user = User.find_by(name: params[:this_user])
+	params[:controller] = 'profile'
+	erb :profile
+end
+
 
 get '/logout' do
 	session[:user_id] = nil #logged out
