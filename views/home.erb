@@ -2,14 +2,14 @@
 <h1>Home</h1>
 
 <div class="btn-group" data-toggle="buttons">
-	<label class="btn btn-primary">
-		<input type="radio" name="options" id="option1" autocomplete="off"> Friends
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'friends' %>">
+		<input type="submit" name="options" id="friends-posts">Friends
 	</label>
-	<label class="btn btn-primary">
-		<input type="radio" name="options" id="option2" autocomplete="off"> My Posts
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'myposts' %>">
+		<input type="submit" name="options" id="my-posts" action="/myposts"> My Posts
 	</label>
-	<label class="btn btn-primary active">
-		<input type="radio" name="options" id="option3" autocomplete="off"> All
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'home' %>">
+		<input type="submit" name="options" id="all-posts"> <a href="/">All</a>
 	</label>
 </div>
 <button class="btn btn-primary" style="float: right;" id="new-post">New Post</button>
@@ -17,7 +17,7 @@
 <hr>
 <br>
 
-
+<% if params[:controller] == 'home' %>
 <% Post.all.reverse.each do |post| %>
 
 <div class="post-box">
@@ -27,6 +27,33 @@
 	<div class="post-content"><%= post.content %></div>
 </div>
 
+<% end %>
+<% end %>
+
+<% if params[:controller] == 'friends' %>
+<% Post.all.reverse.each do |post| %>
+
+<div class="post-box">
+	<div class="post-title"><%= post.title %></div>
+	<div class="post-author"><%= post.user.name %></div>
+	<div class="post-time"><%= post.created_at %></div>
+	<div class="post-content"><%= post.content %></div>
+</div>
+
+<% end %>
+<% end %>
+
+<% if params[:controller] == 'myposts' %>
+<% @user.posts.all.reverse.each do |post| %>
+
+<div class="post-box">
+	<div class="post-title"><%= post.title %></div>
+	<div class="post-author"><%= post.user.name %></div>
+	<div class="post-time"><%= post.created_at %></div>
+	<div class="post-content"><%= post.content %></div>
+</div>
+
+<% end %>
 <% end %>
 
 <div class="new-post-box">

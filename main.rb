@@ -27,6 +27,25 @@ post '/home' do
 	@content = params[:content]
 	@title = params[:title]
 	@user.posts.create(title: @title, content: @content)
+	params[:controller] = 'home'
+	erb :home
+end
+
+get '/friends' do
+	@user = current_user
+	@content = params[:content]
+	@title = params[:title]
+	# @user.posts.create(title: @title, content: @content)
+	params[:controller] = 'friends'
+	erb :home
+end
+
+get '/myposts' do
+	@user = current_user
+	@content = params[:content]
+	@title = params[:title]
+	# @user.posts.create(title: @title, content: @content)
+	params[:controller] = 'myposts'
 	erb :home
 end
 
