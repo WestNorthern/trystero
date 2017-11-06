@@ -86,16 +86,26 @@ post '/signup' do
 	
 	p params
 	session[:user_id] = @user.id
-
-
-	erb :home
+	redirect '/'
 end
 
 get '/profile' do
 	@user = current_user
+	puts "Here are the params"
+	p params
 	params[:controller] = 'profile'
 	erb :profile
 end
+
+post '/profile' do
+	@user = current_user
+	puts "Here are the params"
+	p params
+	@other_user = User.find_by(name: params[:this_user])
+	params[:controller] = 'profile'
+	erb :profile
+end
+
 
 get '/logout' do
 	session[:user_id] = nil #logged out
