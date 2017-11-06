@@ -19,52 +19,51 @@
 <br>
 
 <% if params[:controller] == 'home' %>
-<% Post.all.reverse.each do |post| %>
+	<% Post.all.reverse.each do |post| %>
 
 <form class="post-box" id="<%= post.created_at %>" action="/profile" method="POST">
 	<div class="post-title"><%= post.title %></div>
-	<input type="hidden" this_user="<%= post.user.name %>" value="<%= post.user.name %>" >
 	<div class="post-author">
-		<a onclick="submit(); return false;"><%= post.user.name %></a>
+		<input type="hidden" name="this_user" value="<%= post.user.name %>">
+		<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
 	</div>
 	<div class="post-time"><%= post.created_at %></div>
 	<div class="post-content"><%= post.content %></div>
 </form>
 
-<% end %>
+	<% end %>
 <% end %>
 
 <% if params[:controller] == 'friends' %>
-<% Post.all.reverse.each do |post| %>
+	<% Post.all.reverse.each do |post| %>
 
-<form class="post-box" id="post-box" action="/profile" method="POST">
+<form class="post-box" id="<%= post.created_at %>" action="/profile" method="POST">
 	<div class="post-title"><%= post.title %></div>
-	<input type="text" this_user="<%= post.user.name %>">
 	<div class="post-author">
-		<a onclick="document.getElementById('post-box').submit(); return false;"><%= post.user.name %></a>
+		<input type="hidden" name="this_user" value="<%= post.user.name %>">
+		<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
 	</div>
 	<div class="post-time"><%= post.created_at %></div>
 	<div class="post-content"><%= post.content %></div>
 </form>
 
-<% end %>
+	<% end %>
 <% end %>
 
 <% if params[:controller] == 'myposts' %>
-<% @user.posts.all.reverse.each do |post| %>
+	<% @user.posts.all.reverse.each do |post| %>
 
-<form class="post-box" id="post-box" action="/profile" method="POST">
+<form class="post-box" id="<%= post.created_at %>" action="/profile" method="POST">
 	<div class="post-title"><%= post.title %></div>
-	<input type="hidden" this_user="<%= post.user.name %>">
 	<div class="post-author">
-		<a onclick="document.getElementById('post-box').submit(); return false;"><%= post.user.name %></a>
+		<input type="hidden" name="this_user" value="<%= post.user.name %>">
+		<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
 	</div>
 	<div class="post-time"><%= post.created_at %></div>
 	<div class="post-content"><%= post.content %></div>
 </form>
 
-
-<% end %>
+	<% end %>
 <% end %>
 
 <div class="new-post-box">
