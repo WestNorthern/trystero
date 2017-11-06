@@ -1,18 +1,19 @@
 
 <h1>Home</h1>
 
-<div class="btn-group">
-	<!-- <label class="btn btn-primary <%= 'active' if params[:controller] == 'friends' %>" href="/friends-posts"> -->
-		<a href="/friends-posts">Friends</a>
-	<!-- </label> -->
-	<!-- <label class="btn btn-primary <%= 'active' if params[:controller] == 'myposts' %>" href="/myposts"> -->
-		<a href="/myposts">My Posts</a>
-	<!-- </label> -->
-	<!-- <label class="btn btn-primary <%= 'active' if params[:controller] == 'home' %>" href="/"> -->
-		<a href="/">All</a>
-	<!-- </label> -->
+<div>
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'friends' %>" href="/friends-posts">
+		<a class="post-display-buttons" href="/friends-posts">Friends</a>
+	</label>
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'myposts' %>" href="/myposts">
+		<a class="post-display-buttons" href="/myposts">My Posts</a>
+	</label>
+	<label class="btn btn-primary <%= 'active' if params[:controller] == 'home' %>" href="/">
+		<a class="post-display-buttons" href="/">All</a>
+	</label>
 </div>
 <button class="btn btn-primary" style="float: right;" id="new-post">New Post</button>
+<button class="btn btn-primary" style="float: right; display: none;" id="nevermind">Nevermind...</button>
 <br>
 <hr>
 <br>

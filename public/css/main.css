@@ -80,3 +80,7 @@ body {
 	height: 30px;
 	border-radius: 5px;
 }
+
+.post-display-buttons {
+	color: ghostwhite;
+}
