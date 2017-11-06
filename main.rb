@@ -98,8 +98,9 @@ end
 post '/profile' do
 	@user = current_user
 	puts "Here are the params"
-	p params
+	
 	@other_user = User.find_by(name: params[:this_user])
+	p params
 	params[:controller] = 'profile'
 	erb :profile
 end
