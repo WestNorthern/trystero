@@ -91,8 +91,6 @@ end
 
 get '/profile' do
 	@user = current_user
-	puts "Here are the params"
-	p params
 	params[:controller] = 'profile'
 	erb :profile
 end
