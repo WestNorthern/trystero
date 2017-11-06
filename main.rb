@@ -31,7 +31,7 @@ post '/home' do
 	erb :home
 end
 
-get '/friends' do
+get '/friends-posts' do
 	@user = current_user
 	@content = params[:content]
 	@title = params[:title]
