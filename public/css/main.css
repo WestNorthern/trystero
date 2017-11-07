@@ -1,6 +1,102 @@
 body {
-	background: darkgrey;
+	background: antiquewhite;
 	color: grey;
+}
+
+.login-bubble {
+	position: relative;
+	text-align: center;
+	background: aliceblue;
+	margin: 75px auto;
+	width: 700px;
+	height: 700px;
+	border-radius: 50%;
+	box-shadow: 10px 10px 10px #888888;
+}
+
+.login-bubble form {
+	position: absolute;
+	left: 10%;
+	top: 14%;
+	width: 80%;
+	height: 80%;
+}
+
+.signup-bubble {
+	position: relative;
+	text-align: center;
+	background: aliceblue;
+	margin: 75px auto;
+	width: 700px;
+	height: 700px;
+	border-radius: 50%;
+	box-shadow: 10px 10px 10px #888888;
+}
+
+.signup-bubble form {
+	position: absolute;
+	left: 10%;
+	top: 14%;
+	width: 80%;
+	height: 80%;
+}
+
+.edit-profile-bubble {
+	position: relative;
+	text-align: center;
+	background: aliceblue;
+	margin: 75px auto;
+	width: 700px;
+	height: 700px;
+	border-radius: 50%;
+	box-shadow: 10px 10px 10px #888888;
+}
+
+.edit-profile-bubble form {
+	position: absolute;
+	left: 10%;
+	top: 14%;
+	width: 80%;
+	height: 80%;
+}
+
+.profile-bubble {
+	position: relative;
+	text-align: center;
+	background: aliceblue;
+	margin: 75px auto;
+	width: 700px;
+	height: 700px;
+	border-radius: 50%;
+	box-shadow: 10px 10px 10px #888888;
+	padding-top: 10%;
+}
+
+.profile-image {
+	position: relative;
+	left: 40%;
+	width: 150px;
+	height: 150px;
+	background: ivory;
+	border: 1px solid khaki;
+	border-radius: 5px;
+	box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.profile-image img {
+	position: absolute;
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	top: 5%;
+	border-radius: 5px;
+}
+
+.profile-name {
+	text-align: center;
+	margin-top: 3%;
+	font-weight: bold;
+	font-size: 1.5em;
 }
 
 .trumpet {
@@ -83,6 +179,7 @@ body {
 	left: 87%;
 	top: 50%;
 	border-radius: 50%;
+	box-sizing: border-box;
 }
 
 .new-post-box .new-post-title {
@@ -115,11 +212,26 @@ body {
 	border-radius: 5px;
 }
 
-.edit-post-box button {
+.confirm-edit {
 	position: absolute;
 	left: 87%;
 	top: 50%;
 	border-radius: 50%;
+	font-size: auto;
+	border-radius: 50%;
+	width: 50px!;
+	height: 50px!;
+
+}
+
+.nvm-edit {
+	position: absolute;
+	left: 87%;
+	top: 50%;
+	font-size: auto;
+	border-radius: 50%;
+	width: 50px!;
+	height: 50px!;
 }
 
 .edit-post-box .edit-post-title {

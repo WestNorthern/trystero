@@ -27,7 +27,7 @@
 		<input type="hidden" name="this_user" value="<%= post.user.name %>">
 		<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
 	</div>
-	<div class="post-time"><%= post.created_at %></div>
+	<div class="post-time"><%= post.created_at.to_formatted_s(:short) %></div>
 	<div class="post-content"><%= post.content %></div>
 </form>
 
@@ -43,14 +43,14 @@
 		<input type="hidden" name="this_user" value="<%= post.user.name %>">
 		<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
 	</div>
-	<div class="post-time"><%= post.created_at %></div>
+	<div class="post-time"><%= post.created_at.to_formatted_s(:short) %></div>
 	<div class="post-content"><%= post.content %></div>
 </form>
 
 	<% end %>
 <% end %>
 
-<% if params[:controller] == 'myposts' %>
+<% if params[:controller] == 'myposts' || params[:controller] == 'edit' %>
 	<% @user.posts.all.reverse.each do |post| %>
 
 <div class="post-box" id="post-box">
@@ -60,7 +60,7 @@
 			<input type="hidden" name="this_user" value="<%= post.user.name %>">
 			<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
 		</div>
-		<div class="post-time"><%= post.created_at %></div>
+		<div class="post-time"><%= post.created_at.to_formatted_s(:short) %></div>
 		<div class="post-content"><%= post.content %></div>
 	</form>
 	<form action="/edit-post" id="<%= post.id %>" method="POST">
@@ -90,8 +90,8 @@
 		<input type="hidden" name="post_to_edit" value="<%= @post_to_edit.id %>">
 		<input type="text" class="edit-post-title" name="edit_title" placeholder="<%= @post_to_edit.title %>">
 		<textarea name="edit_content" id="edit-post" placeholder="<%= @post_to_edit.content %>" maxlength="150"></textarea>
-		<button type="submit" class="btn btn-primary">Update</button>
-		<button class="btn btn-primary" id="edit-nevermind" type="button">Nevermind</button>
+		<button type="submit" class="btn btn-primary confirm-edit">O</button>
+		<button class="btn btn-primary nvm-edit" id="edit-nevermind" type="button">X</button>
 	</form>
 </div>
 <% end %>
