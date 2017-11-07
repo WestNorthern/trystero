@@ -26,4 +26,9 @@ $(function() {
 		$('.edit-post-box').hide();
 	});
 
+
+	$('#user-search').keypress(function(e){
+		console.log(e.key);
+	})
+
 });

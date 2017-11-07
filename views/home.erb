@@ -21,15 +21,18 @@
 <% if params[:controller] == 'home' %>
 	<% Post.all.reverse.each do |post| %>
 
-<form class="post-box" id="<%= post.created_at %>" action="/profile" method="POST">
-	<div class="post-title"><%= post.title %></div>
-	<div class="post-author">
-		<input type="hidden" name="this_user" value="<%= post.user.name %>">
-		<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
-	</div>
-	<div class="post-time"><%= post.created_at.to_formatted_s(:short) %></div>
-	<div class="post-content"><%= post.content %></div>
-</form>
+<div class="background-thing">
+	<form class="post-box" id="<%= post.created_at %>" action="/profile" method="POST">
+
+		<div class="post-title"><%= post.title %></div>
+		<div class="post-author">
+			<input type="hidden" name="this_user" value="<%= post.user.name %>">
+			<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
+		</div>
+		<div class="post-time"><%= post.created_at.to_formatted_s(:short) %></div>
+		<div class="post-content"><%= post.content %></div>
+	</form>
+</div>
 
 	<% end %>
 <% end %>

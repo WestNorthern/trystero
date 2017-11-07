@@ -1,13 +1,18 @@
+html {
+	background-image: url('https://i.pinimg.com/736x/fa/ee/4b/faee4b646d58b4519644670719c0c5e2--new-york-minute-dream-quotes.jpg');
+}
+
 body {
 	background: antiquewhite;
 	color: grey;
 }
 
+
 .login-bubble {
 	position: relative;
 	text-align: center;
 	background: aliceblue;
-	margin: 75px auto;
+	margin: 20px auto;
 	width: 700px;
 	height: 700px;
 	border-radius: 50%;
@@ -26,7 +31,7 @@ body {
 	position: relative;
 	text-align: center;
 	background: aliceblue;
-	margin: 75px auto;
+	margin: 20px auto;
 	width: 700px;
 	height: 700px;
 	border-radius: 50%;
@@ -45,11 +50,12 @@ body {
 	position: relative;
 	text-align: center;
 	background: aliceblue;
-	margin: 75px auto;
+	margin: 20px auto;
 	width: 700px;
 	height: 700px;
 	border-radius: 50%;
 	box-shadow: 10px 10px 10px #888888;
+	display: none;
 }
 
 .edit-profile-bubble form {
@@ -74,7 +80,7 @@ body {
 	position: relative;
 	text-align: center;
 	background: aliceblue;
-	margin: 75px auto;
+	margin: 20px auto;
 	width: 700px;
 	height: 700px;
 	border-radius: 50%;
@@ -109,6 +115,19 @@ body {
 	font-size: 1.5em;
 }
 
+.background-thing {
+	width: 80%;
+	height: 100px;
+	position: relative;
+	margin: 10px auto;
+	background-image: url('/images/wild.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	padding: 5%;
+	border-radius: 5px;
+}
+
 .trumpet {
 	width: 60px;
 	height: 60px;
@@ -117,11 +136,13 @@ body {
 }
 
 .post-box {
-	width: 80%;
-	height: 100px;
-	position: relative;
-	margin: 10px auto;
-	border: 2px solid black;
+	width: 95%;
+	height: 95%;
+	left: 2.5%;
+	top: 2.5%;
+	position: absolute;
+	background: ivory;
+	border-radius: 5px;
 
 }
 

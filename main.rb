@@ -150,3 +150,9 @@ get '/logout' do
 	redirect '/'
 end
 
+post '/search_for_user' do
+	puts "here are the params: #{params.inspect}"
+	@users = User.where('name LIKE ?', "%#{params[:search_term]}%")
+	erb :search_results, layout: false
+end
+
