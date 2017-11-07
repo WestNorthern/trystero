@@ -107,9 +107,18 @@ post '/profile' do
 end
 
 post '/edit-post' do
-	params[:controller] = 'myposts'
 	@user = current_user
 	@post_to_edit = Post.find_by(id: params[:this_post])
+	params[:controller] = 'edit'
+	erb :home
+end
+
+post '/save-post' do
+	@user = current_user
+	@post_to_edit = Post.find_by(id: params[:this_post])
+	@new_title = params[:edit_title]
+	@new_content = params[:edit_content]
+	@post_to_edit.update(title: @new_title, content: @new_content)
 	params[:controller] = 'edit'
 	erb :home
 end

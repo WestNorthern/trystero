@@ -79,16 +79,16 @@
 <div class="new-post-box">
 	<form action="/home" method="POST">
 		<input type="text" class="new-post-title" name="title">
-		<textarea name="content" id="new-post" ></textarea>
+		<textarea name="content" id="new-post" maxlength="150" ></textarea>
 		<button type="submit" class="btn btn-primary">Post</button>
 	</form>
 </div>
 
 <% if params[:controller] == 'edit' %>
 <div class="edit-post-box">
-	<form action="" method="POST">
-		<input type="text" class="edit-post-title" name="edit-title" placeholder="<%= @post_to_edit.title %>">
-		<textarea name="edit-content" id="edit-post" placeholder="<%= @post_to_edit.content %>"></textarea>
+	<form action="/save-post" method="POST">
+		<input type="text" class="edit-post-title" name="edit_title" placeholder="<%= @post_to_edit.title %>">
+		<textarea name="edit_content" id="edit-post" placeholder="<%= @post_to_edit.content %>" maxlength="150"></textarea>
 		<button type="submit" class="btn btn-primary">Update</button>
 		<button class="btn btn-primary" id="edit-nevermind" type="button">Nevermind</button>
 	</form>
