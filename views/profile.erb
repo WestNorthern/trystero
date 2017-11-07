@@ -1,14 +1,14 @@
-<h1>Profile</h1>
+
 
 <% if @other_user %>
 
 <div class="their-profile profile-bubble">
-	<div class="profile-image"><%= @other_user.image %></div>
+	<div class="profile-image"><img src="<%= @other_user.image %>" alt="<%= @other_user.name %> picture"></div>
 	<div class="profile-name"><%= @other_user.name %>. . .</div>
 	<p>. . . has been a part of Interrobang since <%= @other_user.created_at.to_formatted_s(:short) %></p>
 	<p><%= @other_user.name %> last posted at <%= @other_user.posts.last.created_at.to_formatted_s(:short) %></p>
 	<hr>
-	<div><%= @other_user.bio %></div>
+	<div class="bio-display"><%= @other_user.bio %></div>
 </div>
 
 <% else %>
@@ -20,8 +20,8 @@
 	<p>You have been a part of Interrobang since <%= @user.created_at.to_formatted_s(:short) %></p>
 	<p>Your last post was at <%= @user.posts.last.created_at.to_formatted_s(:short) %></p>
 	<hr>
-	<div><%= @user.bio %></div>
-	<button>Edit Profile</button>
+	<div class="bio-display"><%= @user.bio %></div>
+	<button class="btn btn-primary" id="edit-profile-button">Edit Profile</button>
 </div>
 
 

@@ -60,6 +60,16 @@ body {
 	height: 80%;
 }
 
+.bio-display {
+	width: 50%;
+	height: auto;
+	border: 2px solid ivory;
+	background: honeydew;
+	color: olive;
+	margin: 20px auto;
+
+}
+
 .profile-bubble {
 	position: relative;
 	text-align: center;
