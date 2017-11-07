@@ -105,6 +105,13 @@ post '/profile' do
 	erb :profile
 end
 
+post '/edit-post' do
+	@user = current_user
+	@post_to_edit = Post.find_by(id: params[:this_post])
+	params[:controller] = 'edit'
+	erb :home
+end
+
 
 get '/logout' do
 	session[:user_id] = nil #logged out
