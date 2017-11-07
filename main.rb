@@ -23,10 +23,14 @@ get '/' do
 end
 
 post '/home' do
+	params[:controller] = 'myposts'
 	@user = current_user
 	@content = params[:content]
 	@title = params[:title]
 	@user.posts.create(title: @title, content: @content)
+	@post_to_edit = Post.find_by(id: params[:this_post])
+	puts "This is accessing your home view"
+	p params
 	params[:controller] = 'home'
 	erb :home
 end
@@ -105,6 +109,34 @@ post '/profile' do
 	erb :profile
 end
 
+post '/edit-post' do
+	@user = current_user
+	@post_to_edit = Post.find_by(id: params[:this_post])
+	params[:this_post] = @post_to_edit
+	p params
+	params[:controller] = 'edit'
+	erb :home
+end
+
+
+post '/save-post' do
+	@user = current_user
+	@post_to_edit = Post.find_by(id: params[:post_to_edit])
+	@new_title = params[:edit_title]
+	@new_content = params[:edit_content]
+	@post_to_edit.update(content: @new_content, title: @new_title)
+	@post_to_edit.save
+	params[:controller] = 'home'
+	erb :home
+end
+
+post '/delete-post' do
+	params[:controller] = 'myposts'
+	@user = current_user
+	@post_to_delete = Post.find_by(id: params[:this_post])
+	@post_to_delete.destroy
+	erb :home
+end
 
 get '/logout' do
 	session[:user_id] = nil #logged out

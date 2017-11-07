@@ -53,15 +53,25 @@
 <% if params[:controller] == 'myposts' %>
 	<% @user.posts.all.reverse.each do |post| %>
 
-<form class="post-box" id="<%= post.created_at %>" action="/profile" method="POST">
-	<div class="post-title"><%= post.title %></div>
-	<div class="post-author">
-		<input type="hidden" name="this_user" value="<%= post.user.name %>">
-		<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
-	</div>
-	<div class="post-time"><%= post.created_at %></div>
-	<div class="post-content"><%= post.content %></div>
-</form>
+<div class="post-box" id="post-box">
+	<form id="<%= post.created_at %>" action="/profile" method="POST">
+		<div class="post-title"><%= post.title %></div>
+		<div class="post-author">
+			<input type="hidden" name="this_user" value="<%= post.user.name %>">
+			<a onclick="document.getElementById('<%= post.created_at %>').submit();"><%= post.user.name %></a>
+		</div>
+		<div class="post-time"><%= post.created_at %></div>
+		<div class="post-content"><%= post.content %></div>
+	</form>
+	<form action="/edit-post" id="<%= post.id %>" method="POST">
+		<input type="hidden" name="this_post" value="<%= post.id %>">
+		<div class="edit-post"><a onclick="document.getElementById('<%= post.id %>').submit();">Edit</a></div>
+	</form>
+	<form action="/delete-post" action="/delete-post" id="<%= post.id.to_s + 'del' %>" method="POST">
+		<input type="hidden" name="this_post" value="<%= post.id %>">
+		<div class="delete-post"><a onclick="document.getElementById('<%= post.id.to_s + 'del' %>').submit();">Delete</a></div>
+	</form>
+</div>
 
 	<% end %>
 <% end %>
@@ -69,8 +79,20 @@
 <div class="new-post-box">
 	<form action="/home" method="POST">
 		<input type="text" class="new-post-title" name="title">
-		<textarea name="content" id="new-post" ></textarea>
+		<textarea name="content" id="new-post" maxlength="150" ></textarea>
 		<button type="submit" class="btn btn-primary">Post</button>
 	</form>
 </div>
+
+<% if params[:controller] == 'edit' %>
+<div class="edit-post-box">
+	<form action="/save-post" method="POST">
+		<input type="hidden" name="post_to_edit" value="<%= @post_to_edit.id %>">
+		<input type="text" class="edit-post-title" name="edit_title" placeholder="<%= @post_to_edit.title %>">
+		<textarea name="edit_content" id="edit-post" placeholder="<%= @post_to_edit.content %>" maxlength="150"></textarea>
+		<button type="submit" class="btn btn-primary">Update</button>
+		<button class="btn btn-primary" id="edit-nevermind" type="button">Nevermind</button>
+	</form>
+</div>
+<% end %>
 	

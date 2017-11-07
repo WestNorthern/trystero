@@ -18,4 +18,12 @@ $(function() {
 		$('#nevermind').hide();
 	});
 
+	$('.edit-post').click(function(){
+		$('.edit-post-box').show();
+	});
+
+	$('#edit-nevermind').click(function(){
+		$('.edit-post-box').hide();
+	});
+
 });
