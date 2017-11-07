@@ -67,8 +67,9 @@
 		<input type="hidden" name="this_post" value="<%= post.id %>">
 		<div class="edit-post"><a onclick="document.getElementById('<%= post.id %>').submit();">Edit</a></div>
 	</form>
-	<form action="/delete-post">
-		<div class="delete-post">Delete</div>
+	<form action="/delete-post" action="/delete-post" id="<%= post.id.to_s + 'del' %>" method="POST">
+		<input type="hidden" name="this_post" value="<%= post.id %>">
+		<div class="delete-post"><a onclick="document.getElementById('<%= post.id.to_s + 'del' %>').submit();">Delete</a></div>
 	</form>
 </div>
 

@@ -23,6 +23,7 @@ get '/' do
 end
 
 post '/home' do
+	params[:controller] = 'myposts'
 	@user = current_user
 	@content = params[:content]
 	@title = params[:title]
@@ -106,12 +107,20 @@ post '/profile' do
 end
 
 post '/edit-post' do
+	params[:controller] = 'myposts'
 	@user = current_user
 	@post_to_edit = Post.find_by(id: params[:this_post])
 	params[:controller] = 'edit'
 	erb :home
 end
 
+post '/delete-post' do
+	params[:controller] = 'myposts'
+	@user = current_user
+	@post_to_delete = Post.find_by(id: params[:this_post])
+	@post_to_delete.destroy
+	erb :home
+end
 
 get '/logout' do
 	session[:user_id] = nil #logged out
