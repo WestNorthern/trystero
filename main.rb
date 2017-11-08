@@ -96,6 +96,7 @@ end
 get '/profile' do
 	@user = current_user
 	params[:controller] = 'profile'
+	p params
 	erb :profile
 end
 
@@ -112,7 +113,6 @@ end
 post '/edit-post' do
 	@user = current_user
 	@post_to_edit = Post.find_by(id: params[:this_post])
-	params[:this_post] = @post_to_edit
 	p params
 	params[:controller] = 'edit'
 	erb :home
@@ -138,8 +138,24 @@ post '/delete-post' do
 	erb :home
 end
 
+post '/edit-profile' do
+	@user = current_user
+	@user.update(name: params[:new_name], email: params[:new_email], image: params[:new_photo], bio: params[:new_bio])
+	@user.save
+	redirect '/profile'
+end
+
 get '/logout' do
 	session[:user_id] = nil #logged out
 	redirect '/'
+end
+
+post '/search_for_user' do
+	curruser = current_user
+	puts "here are the params: #{params.inspect}"
+	@users = User.where('name LIKE ?', "%#{params[:search_term]}%").reject
+	{|user| user == curruser}
+	erb :search_results, layout: false
+	@users.delete(current_user)
 end
 

@@ -1,17 +1,52 @@
-<h1>Profile</h1>
+
 
 <% if @other_user %>
 
-<div><%= @other_user.name %></div>
-<div><%= @other_user.email %></div>
-<div><%= @other_user.created_at %></div>
-<div><%= @other_user.image %></div>
+<div class="their-profile profile-bubble">
+	<div class="profile-image"><img src="<%= @other_user.image %>" alt="<%= @other_user.name %> picture"></div>
+	<div class="profile-name"><%= @other_user.name %>. . .</div>
+	<p>. . . has been a part of Interrobang since <%= @other_user.created_at.to_formatted_s(:short) %></p>
+	<p><%= @other_user.name %> last posted at <%= @other_user.posts.last.created_at.to_formatted_s(:short) %></p>
+	<hr>
+	<div class="bio-display"><%= @other_user.bio %></div>
+</div>
 
 <% else %>
 
-<div><%= @user.name %></div>
-<div><%= @user.email %></div>
-<div><%= @user.created_at %></div>
-<div><%= @user.image %></div>
+<div class="your-profile profile-bubble">
+	<div class="profile-image"><img src="<%= @user.image %>" alt="<%= @user.name %> picture"></div>
+	<div class="profile-name"><%= @user.name %></div>
+	<br><br>
+	<p>You have been a part of Interrobang since <%= @user.created_at.to_formatted_s(:short) %></p>
+	<p>Your last post was at <%= @user.posts.last.created_at.to_formatted_s(:short) %></p>
+	<hr>
+	<div class="bio-display"><%= @user.bio %></div>
+	<button class="btn btn-primary" id="edit-profile-button">Edit Profile</button>
+</div>
+
+
+<div class="edit-profile-bubble col-6">	
+	<form action="/edit-profile" method="POST">
+		<div class="form-group">
+			<h3>Update Your Profile Information</h3>
+		  <label for="email">Email Address</label>
+		  <input type="email" class="form-control" id="email" name="new_email" aria-describedby="emailHelp" value="<%= @user.email %>">
+		</div>
+		<div class="form-group">
+		  <label for="name">Display Name</label>
+		  <input type="text" class="form-control" id="display-name" name="new_name" value="<%= @user.name %>">
+		</div>
+		<div class="form-group">
+		  <label for="photo">Profile Photo URL</label>
+		  <input type="text" class="form-control" id="photo" name="new_photo" value="<%= @user.image %>" placeholder="Add New Photo Url Here">
+		</div>
+		<div class="form-group">
+		  <label for="bio">Tell us a little about you...</label>
+		  <textarea type="text" class="form-control" id="bio" name="new_bio" value="<%= @user.bio  %>"><%= @user.bio  %></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">Update Profile</button>
+		<button type="button" class="btn btn-primary" id="nvm-edit-profile">Nevermind...</button>
+  </form>
+</div>
 
 <% end %>
