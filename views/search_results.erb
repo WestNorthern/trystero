@@ -2,7 +2,12 @@
 
 	<% @users.each do |user| %>
 
-  <li class="list-group-item"><%= user.name %></li>
+  <li class="list-group-item" >
+  	<form action="/profile" method="POST" id="<%= user.id %>">
+  		<input type="hidden" name="this_user" value="<%= user.name %>">
+  		<a onclick="document.getElementById('<%= user.id %>').submit();"><%= user.name %></a>
+  	</form>
+  </li>
   
 
 	<% end %>

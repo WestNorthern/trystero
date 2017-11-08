@@ -1,12 +1,21 @@
-html {
-	background-image: url('https://i.pinimg.com/736x/fa/ee/4b/faee4b646d58b4519644670719c0c5e2--new-york-minute-dream-quotes.jpg');
-}
+
 
 body {
 	background: antiquewhite;
 	color: grey;
 }
 
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+background-color:#560000;
+color:ghostwhite;
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+    text-decoration: none;
+    background-color: khaki;
+    color: ghostwhite;
+}
 
 .login-bubble {
 	position: relative;
@@ -129,20 +138,20 @@ body {
 }
 
 .trumpet {
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 100px;
 	margin-top: 40px;
-	margin-left: 100px;
+	margin-left: 80px;
 }
 
 .post-box {
 	width: 95%;
-	height: 95%;
-	left: 2.5%;
-	top: 2.5%;
-	position: absolute;
+	height: 100px;
+	margin: 15px auto;
+	position: relative;
 	background: ivory;
 	border-radius: 5px;
+	border: 2px solid crimson;
 
 }
 

@@ -151,8 +151,11 @@ get '/logout' do
 end
 
 post '/search_for_user' do
+	curruser = current_user
 	puts "here are the params: #{params.inspect}"
-	@users = User.where('name LIKE ?', "%#{params[:search_term]}%")
+	@users = User.where('name LIKE ?', "%#{params[:search_term]}%").reject
+	{|user| user == curruser}
 	erb :search_results, layout: false
+	@users.delete(current_user)
 end
 
