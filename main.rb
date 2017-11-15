@@ -23,6 +23,9 @@ get '/' do
 end
 
 post '/home' do
+	if @user.nil?
+		redirect '/login'
+	end
 	params[:controller] = 'myposts'
 	@user = current_user
 	@content = params[:content]
@@ -152,9 +155,13 @@ end
 
 post '/search_for_user' do
 	curruser = current_user
-	puts "here are the params: #{params.inspect}"
-	@users = User.where('name LIKE ?', "%#{params[:search_term]}%").reject
-	{|user| user == curruser}
+	@users = User.where('name LIKE ?', "%#{params[:search_term]}%").reject {|user| user == curruser}
 	erb :search_results, layout: false
+end
+
+get '/delete-user' do
+	@user = current_user
+	@user.destroy
+	erb :home
 end
 
